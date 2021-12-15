@@ -1,5 +1,5 @@
 {
-  "name": "@AbdulMoeedSaleem/boiler-plate",
+  "name": "@abdulmoeedsaleem/boiler-plate",
   "version": "1.0.1",
   "main": "dist/index.js",
   "scripts": {
@@ -8,6 +8,9 @@
   },
   "bin": {
     "mycli": "./dist/index.js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@abdulmoeedsaleem"
   },
   "license": "MIT",
   "devDependencies": {
