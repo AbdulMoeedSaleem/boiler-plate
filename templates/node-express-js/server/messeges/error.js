@@ -1,0 +1,22 @@
+module.exports = {
+    add : {message : "record creation failed"},
+    edit : {message : "record update failed"},
+    remove : {message : "record delete failed"},
+    inValidUser: {message: "User Name or Password Incorrect. Please enter the correct username and password"},
+    userNotVerify: {message: "User not verified."},
+    accessDenied: {message: "You do not have access to the records"},
+    notFound: {message: "Requested information Not Found."},
+    pinNotMatched: {message: "Outlet pin not matched"},
+    offerAlreadyRedeem: {message: "Offer already redeemed"},
+    offerExpired: {message: "Offer has been expired"},
+    yetNotImpl: {message: "Yet not implement"},  
+    serverError: {message: "500 Unsupported Request"},
+    noAssetsUpload: {message: "No assets upload"},
+    duplicateEmail: {message: "The request could not be completed due to a conflict with an existing record"},
+    authError: {message: "Please login to activate your Mastercard Membership."},
+    noMembership: {message:"No membership Found"},
+    noVoucherApplied: {message:"This order is not eligible for any vouchers"},
+    outletMax:{message: "You cannot add more Vouchers for this Outlet"},
+    differentOfferType:{message:"Different offer type"},
+    vouchersLimit:{message:"You cannot select more vouchers"}
+};
