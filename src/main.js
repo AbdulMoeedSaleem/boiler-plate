@@ -53,8 +53,8 @@ export async function createProject(options) {
   options = {
     ...options,
     targetDirectory: options.targetDirectory || process.cwd(),
-    email: 'hi@dominik.dev',
-    name: 'Dominik Kundel',
+    email: 'moeedsalfi@gmail.com',
+    name: 'Abdul Moeed Saleem',
   };
 
   const fullPathName = new URL(import.meta.url).pathname;

@@ -19,4 +19,4 @@ MIT
 
 ## Collaborators
 
-- Dominik Kundel <hi@dominik.dev>
+- Abdul Moeed Saleem <moeedsalfi@gmail.com>
