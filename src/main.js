@@ -10,6 +10,7 @@ import license from 'spdx-license-list/licenses/MIT';
 import { promisify } from 'util';
 
 const access = promisify(fs.access);
+const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const copy = promisify(ncp);
 const writeGitignore = promisify(gitignore.writeFile);
@@ -39,6 +40,15 @@ async function createLicense(options) {
   return writeFile(targetPath, licenseContent, 'utf8');
 }
 
+async function modifyPackgeJsonFile(options) {
+  const targetPath = path.join(options.targetDirectory, 'package.json');
+  const pjson = JSON.parse(await readFile(targetPath, 'utf8'));
+  const name = options.projectName;
+  const author = `${options.name} <${options.email}>`;
+  const updatedJson = { ...pjson, author, name };
+  return writeFile(targetPath, JSON.stringify(updatedJson, null, 4), 'utf8');
+}
+
 async function initGit(options) {
   const result = await execa('git', ['init'], {
     cwd: options.targetDirectory,
@@ -53,8 +63,6 @@ export async function createProject(options) {
   options = {
     ...options,
     targetDirectory: options.targetDirectory || process.cwd(),
-    email: 'moeedsalfi@gmail.com',
-    name: 'Abdul Moeed Saleem',
   };
 
   const fullPathName = new URL(import.meta.url).pathname;
@@ -87,12 +95,16 @@ export async function createProject(options) {
         task: () => createLicense(options),
       },
       {
+        title: 'Generating package.json',
+        task: () => modifyPackgeJsonFile(options),
+      },
+      {
         title: 'Initialize git',
         task: () => initGit(options),
         enabled: () => options.git,
       },
       {
-        title: 'Install dependencies',
+        title: 'Installing dependencies',
         task: () =>
           projectInstall({
             cwd: options.targetDirectory,
@@ -109,6 +121,7 @@ export async function createProject(options) {
   );
 
   await tasks.run();
-  console.log('%s Project ready', chalk.green.bold('DONE'));
+  console.log(chalk.green.bold('Smoothly Done 👍'));
+  console.log(chalk.blue.bold.italic('Please read README.md file before starting Thanks 🧐'));
   return true;
 }

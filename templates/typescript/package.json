@@ -1,7 +1,7 @@
 {
-  "name": "ekhata-server",
+  "name": "test-server",
   "version": "1.0.0",
-  "description": "EKhata Server Application",
+  "description": "server-application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,16 +9,8 @@
     "migration:generate": "npx sequelize-cli migration:generate",
     "migration:latest": "npx sequelize-cli db:migrate"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://abdul_moeed94@bitbucket.org/maazExperia/api-server.git"
-  },
-  "keywords": [
-    "khata"
-  ],
   "author": "Abdul Moeed",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/maazExperia/api-server#readme",
   "dependencies": {
     "aes-js": "^3.1.2",
     "axios": "^0.24.0",
