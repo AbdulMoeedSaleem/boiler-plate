@@ -1,24 +1,92 @@
-# `@abdulmoeedsaleem/boiler-plate`
-
-🏗 Personal CLI to bootstrap new projects
+# GETTING STARTED
 
 ## Installation & Usage
 
+### Create database
+
+1. For PostgreSQL
+
 ```bash
-npm init @abdulmoeedsaleem/project
-# or
-npx @abdulmoeedsaleem/boiler-plate
-# or
-npm install -g @abdulmoeedsaleem/boiler-plate
-boiler-plate
+psql
+CREATE DATABASE <databasename>;
 ```
+
+2. For MySQL
+
+```bash
+mysql -u username
+CREATE DATABASE <databasename>;
+```
+
+### Fill-up Environment Variables
+
+1. For  NODE/.env
+
+```bash
+Change variable values to required ones in ".env"
+```
+
+2. For PM2/Ecosystem
+
+```bash
+Change variable values to required ones in ".ecosystem.config.js"
+```
+
+### Install Dependencies
+
+```bash
+npm i
+```
+
+### Default Data Setup
+
+Since We are using Sequelize in this Server kindly follow https://sequelize.org/ for further Documentation.
+
+Check Migration Files inside _migrations_ folder before running migration.
+
+Change tables and columns scripts accordingly (Change Model desings _(inside sequelize/models/*)_ as well if you want to change migration scripts).
+
+1. For running Migration
+
+```bash
+npm run migration:latest
+```
+
+2. For Creating new migration Script
+
+```bash
+npm run migration:generate -- --name "script-name"
+```
+
+### Database Migrations
+
+1. For  NODE/.env
+
+```bash
+npm start
+```
+
+2. For PM2/Ecosystem
+
+```bash
+pm2 start && pm2 logs
+```
+
 
 ## Miscellaneous
 
-## License
+We have created two different caching system for you. Depending on your application scalling.
 
-MIT
+1. Redis _For large Scale Application (i-e Multiple Instances)_
 
-## Collaborators
+If you want to use Redis please functions from file _server/common/cache.js_
 
-- Abdul Moeed Saleem <moeedsalfi@gmail.com>
+2. Node-cache _For Small Application (i-e Single Instance Server)_
+
+If you want to use Node-Cache please functions from file _server/common/cache_lite.js_
+
+## Contact-us
+
+If you have any query feel free to contact me at moeedsalfi@gmail.com
+
+Thanks Have a wonderfull day :)

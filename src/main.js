@@ -26,10 +26,27 @@ async function createGitignore(options) {
     path.join(options.targetDirectory, '.gitignore'),
     { flags: 'a' }
   );
-  return writeGitignore({
+  await writeGitignore({
     type: 'Node',
     file: file,
   });
+  const targetPath = path.join(options.targetDirectory, '.gitignore');
+  const gIgnoreFile = await readFile(targetPath, 'utf8');
+  const updateGitIgnore = gIgnoreFile + '\n# PM2 Env variables\necosystem.config.js\n\n';
+  return writeFile(targetPath, updateGitIgnore, 'utf8');
+};
+
+async function createEnvEcosystemFiles(options) {
+  const sampleEnvDir = path.join(options.targetDirectory, 'sample.env');
+  const envDir = path.join(options.targetDirectory, '.env');
+  const sampleEcoSystemDir = path.join(options.targetDirectory, 'sample.ecosystem.config.js');
+  const ecoSystemDir = path.join(options.targetDirectory, 'ecosystem.config.js');
+
+  const env = await readFile(sampleEnvDir, 'utf8');
+  const ecosystem = (await readFile(sampleEcoSystemDir, 'utf8')).replace('<server-name>', options.projectName);
+  await writeFile(envDir, env, 'utf8')
+  await writeFile(sampleEcoSystemDir, ecosystem, 'utf8');
+  return writeFile(ecoSystemDir, ecosystem, 'utf8');
 }
 
 async function createLicense(options) {
@@ -89,6 +106,10 @@ export async function createProject(options) {
       {
         title: 'Create gitignore',
         task: () => createGitignore(options),
+      },
+      {
+        title: 'Create Environment Variable Files',
+        task: () => createEnvEcosystemFiles(options),
       },
       {
         title: 'Create License',

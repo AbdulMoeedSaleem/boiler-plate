@@ -1,7 +1,7 @@
 module.exports = {
     apps: [
         {
-            name: "test-server",
+            name: "<server-name>",
             script: "index.js",
             time: true, // Prefix logs with time
             exec_mode: "cluster",
@@ -9,7 +9,7 @@ module.exports = {
             autorestart: true,
             watch: true,
             env: {
-                DEBUG: "server:*",
+                DEBUG: "app:*",
                 NODE_ENV: "development",
                 PORT: 4000,
                 DB_HOST: "<db-host>",

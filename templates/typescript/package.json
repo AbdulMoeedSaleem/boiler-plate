@@ -10,7 +10,7 @@
     "migration:latest": "npx sequelize-cli db:migrate"
   },
   "author": "Abdul Moeed",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "aes-js": "^3.1.2",
     "axios": "^0.24.0",
