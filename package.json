@@ -1,7 +1,7 @@
 {
   "name": "@abdulmoeedsaleem/boiler-plate",
-  "version": "1.2.2",
-  "description": "A CLI to bootstrap my new projects",
+  "version": "1.3.0",
+  "description": "A light weight cli to create new Node/Express Server with ORM integration",
   "main": "src/index.js",
   "bin": {
     "boiler-plate": "bin/boiler-plate"
